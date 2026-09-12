@@ -1,0 +1,28 @@
+# fly.toml — deploy from the monorepo root:
+#   fly launch --config apps/api/fly.toml
+#   fly deploy --config apps/api/fly.toml
+app = "finessepay-api"
+primary_region = "iad"
+
+[build]
+  dockerfile = "apps/api/Dockerfile"
+
+[env]
+  STELLAR_NETWORK = "testnet"
+  STELLAR_HORIZON_URL = "https://horizon-testnet.stellar.org"
+  API_HOST = "0.0.0.0"
+  API_PORT = "3001"
+
+[http_service]
+  internal_port = 3001
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [[http_service.checks]]
+    interval = "30s"
+    timeout = "5s"
+    grace_period = "10s"
+    method = "GET"
+    path = "/health"

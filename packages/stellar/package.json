@@ -1,0 +1,34 @@
+{
+  "name": "@finessepay/stellar",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Stellar SDK helpers, Horizon clients, and network constants (testnet-first).",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "dev": "tsc -p tsconfig.json --watch --preserveWatchOutput",
+    "build": "tsc -p tsconfig.json",
+    "clean": "rimraf dist",
+    "lint": "eslint src --config ../../eslint.config.mjs",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@finessepay/shared": "workspace:*",
+    "@stellar/stellar-sdk": "^13.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.21.0",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.6"
+  }
+}
