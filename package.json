@@ -1,0 +1,31 @@
+{
+  "name": "finessepay",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Decentralized payments on Stellar — receive XLM, USDC, and USDT, then convert to local fiat (NGN, USD, EUR, JPY).",
+  "license": "MIT",
+  "packageManager": "pnpm@9.15.9",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "scripts": {
+    "build:packages": "pnpm --filter @finessepay/shared build && pnpm --filter @finessepay/stellar build",
+    "predev": "pnpm run build:packages",
+    "dev": "pnpm --parallel --filter @finessepay/shared --filter @finessepay/stellar --filter @finessepay/web --filter @finessepay/api dev",
+    "dev:web": "pnpm --filter @finessepay/web dev",
+    "dev:api": "pnpm --filter @finessepay/api dev",
+    "build": "pnpm run build:packages && pnpm --filter @finessepay/api build && pnpm --filter @finessepay/web build",
+    "lint": "eslint .",
+    "test": "pnpm run build:packages && pnpm -r --if-present test",
+    "typecheck": "pnpm run build:packages && pnpm -r --if-present typecheck",
+    "clean": "pnpm -r --if-present clean && rimraf node_modules"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "eslint": "^9.21.0",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.24.1"
+  }
+}
