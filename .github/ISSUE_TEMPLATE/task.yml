@@ -1,0 +1,43 @@
+name: Contributor task
+description: A concrete piece of work with acceptance criteria.
+title: "[stage-0] "
+labels: ["stage-0"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for helping build FinessePay. Keep this testnet-first and secret-free.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What should be true when this issue is done?
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: A checklist a reviewer can tick.
+      value: |
+        - [ ]
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      multiple: true
+      options:
+        - frontend
+        - backend
+        - stellar
+        - ci
+        - docs
+        - hosting
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes for newcomers
+      description: Files to look at, commands to run, pitfalls.
